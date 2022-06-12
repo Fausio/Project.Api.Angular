@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Product } from './models/Product';
 import { service } from './models/Service/AppService';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,8 @@ import { service } from './models/Service/AppService';
 export class AppComponent {
   title = 'Project Angular  ';
   AppUserToken: any = "";
-
+  dataSource: any;
+  displayedColumns: string[] = ['Id', 'Nome'];
 
   constructor(public AppService: service) {
 
@@ -18,7 +21,6 @@ export class AppComponent {
   // call token
   public GenerateToken() {
     this.AppService.GenerateToken().toPromise().then((x) => {
-       
       this.AppUserToken = x;
     })
   }
@@ -34,38 +36,41 @@ export class AppComponent {
   public List() {
     this.AppService.GetProducts(this.AppUserToken)
       .toPromise()
-      .then((resp) => {
+      .then((produtos) => {
 
-        debugger
-        var list = resp;
 
-      }).catch (erro =>{
+        var listaDeProdutos: any;
+        listaDeProdutos = produtos;
+         
+        this.dataSource = listaDeProdutos;
 
-        var erros =erro;
+      }).catch(erro => {
+
+        var erros = erro;
       })
   }
 
-  CreateProduct(){
+  CreateProduct() {
     debugger
-    var Product ={
+    var Product = {
       Id: 0,
       Name: "Phone 11",
-      Imagem:"" 
+      Imagem: ""
     };
 
     debugger
-    this.AppService.PostProduct(this.AppUserToken,Product)
-                  .toPromise()
-                  .then((resp) =>{
-var ok = resp;
-                  }).catch(erro => {
+    this.AppService.PostProduct(this.AppUserToken, Product)
+      .toPromise()
+      .then((resp) => {
+        var ok = resp;
+      }).catch(erro => {
 
-                    debugger
-                    var erros = erro;
-                  })
+        debugger
+        var erros = erro;
+      })
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.GenerateToken();
 
     this.GetProduct()

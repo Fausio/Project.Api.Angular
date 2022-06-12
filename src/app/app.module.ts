@@ -4,11 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
- import { ProductsComponent } from './Component/products/products.component';
+import { ProductsComponent } from './Component/products/products.component';
 
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
     ProductsComponent
   ],
   imports: [
