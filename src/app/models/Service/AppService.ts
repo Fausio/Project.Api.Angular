@@ -7,7 +7,7 @@ import { InputModel, Token } from "../InputModel";
 @Injectable({ providedIn: 'root' })
 
 
-export class services {
+export class service {
 
     private readonly urlBackEnd = environment["apiBackEnd"];
     private readonly urlToken = environment["apiToken"];
@@ -54,11 +54,11 @@ export class services {
     }
 
     // create/add
-    public PostProduct(userToken:any){
+    public PostProduct(userToken:any, product: any){
 
         var url = this.urlBackEnd + "createProduct";
 
-        return this.httpClient.post<Product>(url,{
+        return this.httpClient.post<Product>(url,product,{
                                              headers: new HttpHeaders({
                                             'Content-Type':'Application/json',
                                             'Authorization': `Bearer ${userToken}`
