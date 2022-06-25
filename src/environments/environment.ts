@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false ,
-  apiToken: "http://localhost:5000/api/CreateToken/",
-  apiBackEnd:"http://localhost:5000/api/"
+  apiToken: "http://localhost:51059/api/CreateToken/",
+  apiBackEnd:"http://localhost:51059/api/"
 };
 
 /*

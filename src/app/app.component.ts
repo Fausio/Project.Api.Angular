@@ -41,31 +41,30 @@ export class AppComponent {
 
         var listaDeProdutos: any;
         listaDeProdutos = produtos;
-         
+
         this.dataSource = listaDeProdutos;
-
+        console.log("data", this.dataSource)
       }).catch(erro => {
-
-        var erros = erro;
+ 
       })
   }
 
   CreateProduct() {
-    debugger
+     
     var Product = {
       Id: 0,
       Name: "Phone 11",
       Imagem: ""
     };
 
-    debugger
+     
     this.AppService.PostProduct(this.AppUserToken, Product)
       .toPromise()
       .then((resp) => {
         var ok = resp;
       }).catch(erro => {
 
-        debugger
+         
         var erros = erro;
       })
   }
